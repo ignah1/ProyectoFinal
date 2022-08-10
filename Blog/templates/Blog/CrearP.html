@@ -1,0 +1,12 @@
+{% extends "Blog/index.html" %}
+{% load static %}
+{% block Contenido %} 
+<form action="{% url 'crearp' %}" method="POST"> {% csrf_token %}
+    <table>
+
+        {{Crear.as_table}}
+
+    </table>
+    <input type="submit" value="Enviar">
+</form>
+{% endblock %}

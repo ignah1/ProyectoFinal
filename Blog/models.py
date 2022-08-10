@@ -7,8 +7,8 @@ class POSTEO(models.Model):
     Subtitulo= models.CharField(max_length=30)
     Cuerpo= RichTextField()
     Autor=models.CharField(max_length=30)
-    Born=models.DateField() 
+    Born=models.DateField(blank=True, null=True)
 
     def __str__(self):
-        return f'{self.Titulo} por {self.Autor}' 
+        return f'{self.Titulo} por {self.Autor}'
 # Create your models here.
