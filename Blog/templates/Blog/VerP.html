@@ -1,0 +1,15 @@
+{% extends "Blog/index.html" %}
+{% load static %}
+
+{% block Contenido %}
+<h1>{{Titulo}}</h1>
+<h2>{{Subtitulo}}</h2>
+<p>{{Cuerpo}}</p>
+
+{% endblock %}
+
+
+{% block Contenido2 %}
+<li>Por: {{Autor}}</li>
+<li>Creado: {{Fecha}}</li>
+{% endblock %}

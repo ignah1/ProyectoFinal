@@ -1,5 +1,16 @@
 {% extends "Blog/index.html" %}
 {% load static %}
+
+{% block Contenido %}
+<h2>Actividad reciente:</h2>
+{% for p in POSTEOS %}
+<li>{{p}}</li>
+<button><a href="{% url 'verp' p.Titulo %}">Ver POST</a></button>
+{% endfor %}
+
+{% endblock %}
+
+
 {% block Contenido2 %}
 <p>{{mensaje}}</p>
 

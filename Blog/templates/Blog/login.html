@@ -1,0 +1,15 @@
+{% extends "Blog/index.html" %}
+{% load static %}
+{% block Contenido %} 
+<form action="{% url 'login' %}" method="POST"> {% csrf_token %}
+
+        {{form.as_p}}
+   
+    <input type="submit" value="Ingresar">
+</form>
+{% endblock %}
+
+{% block Contenido2 %}
+<p>{{mensaje}}</p>
+
+{% endblock %}
