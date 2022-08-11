@@ -5,11 +5,17 @@ from django.http import HttpResponse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from .forms import CrearPost, UserRegisterForm, UserEditForm
+from django.contrib.auth.decorators import login_required
+
+
+
 def Inicio(request):
     POSTEOS = POSTEO.objects.all
    
     return render(request, 'Blog/inicio.html', {"POSTEOS":POSTEOS})
 
+
+@login_required
 def CrearP(request):
     if request.method == "POST":
         Formulario = CrearPost(request.POST)
@@ -30,8 +36,9 @@ def CrearP(request):
     return render(request, "Blog/CrearP.html", {"Crear":Formulario})
 
 def VerP(request, TituloPost):
-    selec = POSTEO.objects.get(Titulo=TituloPost)
-    contexto = {"Titulo":selec.Titulo, 'Subtitulo':selec.Subtitulo, 'Cuerpo':selec.Cuerpo, 'Autor':selec.Autor, 'Fecha':selec.Born}
+    selec = POSTEO.objects.get(Titulo =TituloPost)   
+    print(selec)
+    contexto = {"jorge":selec}
     
 
     return(request, 'Blog/VerP.html', contexto)
@@ -84,12 +91,14 @@ def register(request):
       return render(request,"Blog/register.html" ,  {"form":form})
 
 
-
+@login_required
 def logout_request(request):
       logout(request)
       messages.info(request, "Saliste sin problemas")
       return redirect("inicio")
 
+
+@login_required
 def editarperfil(request):
 
       
